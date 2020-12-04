@@ -387,6 +387,10 @@ func hashimoto(hash []byte, nonce uint64, size uint64, lookup func(index uint32)
 	return digest, crypto.Keccak256(append(seed, digest...))
 }
 
+func HashimotoLight(size uint64, cache []uint32, hash []byte, nonce uint64) ([]byte, []byte) {
+	return hashimotoLight(size, cache, hash, nonce)
+}
+
 // hashimotoLight aggregates data from the full dataset (using only a small
 // in-memory cache) in order to produce our final value for a particular header
 // hash and nonce.
